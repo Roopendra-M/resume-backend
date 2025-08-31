@@ -1,4 +1,7 @@
-
+import os
+import uvicorn
 from app.main import app
 
-# to run: uvicorn app.uvicorn_app:app --host 0.0.0.0 --port 8000 --reload
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Railway sets PORT dynamically
+    uvicorn.run(app, host="0.0.0.0", port=port)
